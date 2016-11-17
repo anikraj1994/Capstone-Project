@@ -15,8 +15,6 @@ import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -128,11 +126,7 @@ public class Editor extends Fragment {
             }
         });
 
-        String[] topics = new String[]{
-                "Love","Hate","Joke","Secret Event"
-        };
-
-        selectbutton.setOnClickListener(new View.OnClickListener() {
+       selectbutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -198,17 +192,17 @@ public class Editor extends Fragment {
                 myRef.child(key).setValue(newnote);
 
                 reset();
-                Snackbar.make(view, "Posted!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, R.string.posted, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.action, null).show();
             }
             else{
-                Snackbar.make(view, "Empty Note!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, R.string.empty_note, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.action, null).show();
             }
         }
         else{
-            Snackbar.make(view, "Not Logged in!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Snackbar.make(view, R.string.not_logged_in, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.action, null).show();
         }
     }
     private void makenotewithimage(View view,String url){
@@ -220,23 +214,23 @@ public class Editor extends Fragment {
                 myRef.child(key).setValue(newnote);
 
                 reset();
-                Snackbar.make(view, "Posted!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view, R.string.posted, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.action, null).show();
             }
             else{
-                Snackbar.make(view, "Empty Note!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(view,  R.string.empty_note, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.action, null).show();
             }
         }
         else{
-            Snackbar.make(view, "Not Logged in!", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+            Snackbar.make(view, R.string.not_logged_in, Snackbar.LENGTH_LONG)
+                    .setAction(R.string.action, null).show();
         }
     }
     public void dispatchTakePictureIntent() {
         ContentValues values = new ContentValues();
-        values.put(MediaStore.Images.Media.TITLE, "New Picture");
-        values.put(MediaStore.Images.Media.DESCRIPTION, "From your Camera");
+        values.put(MediaStore.Images.Media.TITLE, getString(R.string.new_picture));
+        values.put(MediaStore.Images.Media.DESCRIPTION,getString(R.string.from_camera));
         imageUri = getContext().getContentResolver().insert(
                 MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -249,15 +243,15 @@ public class Editor extends Fragment {
         int ab,sb;
         ab=ContextCompat.getColor(getContext(), R.color.love);
         sb=ContextCompat.getColor(getContext(), R.color.lovedark);
-        if(type.compareTo("joke")==0){
+        if(type.compareTo(getString(R.string.type_joke))==0){
             ab=ContextCompat.getColor(getContext(), R.color.joke);
             sb=ContextCompat.getColor(getContext(), R.color.jokedark);
         }
-        else if(type.compareTo("hate")==0){
+        else if(type.compareTo(getString(R.string.type_hate))==0){
             ab=ContextCompat.getColor(getContext(), R.color.hate);
             sb=ContextCompat.getColor(getContext(), R.color.hatedark);
         }
-        else if(type.compareTo("conf")==0){
+        else if(type.compareTo(getString(R.string.type_conf))==0){
             ab=ContextCompat.getColor(getContext(), R.color.confession);
             sb=ContextCompat.getColor(getContext(), R.color.confessiondark);
         }
@@ -266,8 +260,8 @@ public class Editor extends Fragment {
                 .setActionBarColor(ab, sb)
                 .setPickerCount(1)
                 .setRequestCode(2)
-                .textOnImagesSelectionLimitReached("You can only choose one!")
-                .textOnNothingSelected("Nothing Selected")
+                .textOnImagesSelectionLimitReached(getString(R.string.you_can_only_choose_one))
+                .textOnNothingSelected(getString(R.string.nothing_selected))
                 .setReachLimitAutomaticClose(true)
                 .startAlbum();
     }
@@ -289,48 +283,48 @@ public class Editor extends Fragment {
 
     }
     private void love(){
-        type="love";
+        type=getString(R.string.type_love);
         mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.love));
         panel.setBackgroundColor(getResources().getColor(R.color.lovedark));
-        Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/love.ttf");
+        Typeface type = Typeface.createFromAsset(getContext().getAssets(),getString(R.string.love_font));
         editText.setTypeface(type);
-        editText.setHint("I love...");
+        editText.setHint(R.string.i_love);
     }
     private void joke(){
-        type="joke";
+        type=getString(R.string.type_joke);
         mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.joke));
         panel.setBackgroundColor(getResources().getColor(R.color.jokedark));
-        Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/love2.ttf");
+        Typeface type = Typeface.createFromAsset(getContext().getAssets(),getString(R.string.joke_font));
         editText.setTypeface(type);
-        editText.setHint("Knock Knock...");
+        editText.setHint(R.string.knock_knock);
     }
     private void hate(){
-        type="hate";
+        type=getString(R.string.type_hate);
         mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.hate));
         panel.setBackgroundColor(getResources().getColor(R.color.hatedark));
-        Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/hate.ttf");
+        Typeface type = Typeface.createFromAsset(getContext().getAssets(),getString(R.string.hate_font));
         editText.setTypeface(type);
-        editText.setHint("I hate...");
+        editText.setHint(R.string.i_hate);
     }
     private void conf(){
-        type="conf";
+        type=getString(R.string.type_conf);
         mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.confession));
         panel.setBackgroundColor(getResources().getColor(R.color.confessiondark));
-        Typeface type = Typeface.createFromAsset(getContext().getAssets(),"fonts/secret.ttf");
+        Typeface type = Typeface.createFromAsset(getContext().getAssets(),getString(R.string.conf_font));
         editText.setTypeface(type);
-        editText.setHint("I broke...");
+        editText.setHint(R.string.i_broke);
     }
     private void setimagebackgroundtint(){
-        if(type.compareTo("love")==0){
+        if(type.compareTo(getString(R.string.type_love))==0){
             mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.lovealpha));
         }
-        else if(type.compareTo("joke")==0){
+        else if(type.compareTo(getString(R.string.type_joke))==0){
             mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.jokealpha));
         }
-        else if(type.compareTo("hate")==0){
+        else if(type.compareTo(getString(R.string.type_hate))==0){
             mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.hatealpha));
         }
-        else if(type.compareTo("conf")==0){
+        else if(type.compareTo(getString(R.string.type_conf))==0){
             mRelativeLayout.setBackgroundColor(getResources().getColor(R.color.confessionalpha));
         }
     }
@@ -338,16 +332,16 @@ public class Editor extends Fragment {
     public void reset(){
         imageselected=false;
         editText.setText("");
-        if(type.compareTo("love")==0){
+        if(type.compareTo(getString(R.string.type_love))==0){
             love();
         }
-        else if(type.compareTo("joke")==0){
+        else if(type.compareTo(getString(R.string.type_joke))==0){
            joke();
         }
-        else if(type.compareTo("hate")==0){
+        else if(type.compareTo(getString(R.string.type_hate))==0){
             hate();
         }
-        else if(type.compareTo("conf")==0){
+        else if(type.compareTo(getString(R.string.type_conf))==0){
             conf();
         }
 
@@ -359,7 +353,7 @@ public class Editor extends Fragment {
 
         pDialog= new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Uploading Image");
+        pDialog.setTitleText(getString(R.string.uploading_image));
         pDialog.setCancelable(false);
         pDialog.show();
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -380,23 +374,21 @@ public class Editor extends Fragment {
             public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                 double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
                // Log.e("upload","Upload is " + progress + "% done");
-                pDialog.setTitleText("Uploading Image "+progress+"%");
+                pDialog.setTitleText(getString(R.string.uploading_images)+progress+"%");
             }
         }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onPaused(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.e("upload","Upload is paused");
-                pDialog.setTitleText("Uploading paused");
+                pDialog.setTitleText(getString(R.string.upload_paused));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle unsuccessful uploads
-                Log.e("upload",exception.getMessage()+"");
                 pDialog.dismiss();
                 new SweetAlertDialog(getContext(), SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Oops...")
-                        .setContentText("Image upload failed! Try again!")
+                        .setTitleText(getString(R.string.oops))
+                        .setContentText(getString(R.string.upload_failed_try_again))
                         .show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -491,17 +483,13 @@ public class Editor extends Fragment {
 
             int orientation = exif.getAttributeInt(
                     ExifInterface.TAG_ORIENTATION, 0);
-            Log.d("EXIF", "Exif: " + orientation);
             Matrix matrix = new Matrix();
             if (orientation == 6) {
                 matrix.postRotate(90);
-                Log.d("EXIF", "Exif: " + orientation);
             } else if (orientation == 3) {
                 matrix.postRotate(180);
-                Log.d("EXIF", "Exif: " + orientation);
             } else if (orientation == 8) {
                 matrix.postRotate(270);
-                Log.d("EXIF", "Exif: " + orientation);
             }
             scaledBitmap = Bitmap.createBitmap(scaledBitmap, 0, 0,
                     scaledBitmap.getWidth(), scaledBitmap.getHeight(), matrix,

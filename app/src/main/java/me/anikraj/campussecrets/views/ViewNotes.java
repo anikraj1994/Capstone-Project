@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
@@ -15,7 +14,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -42,7 +40,6 @@ import me.anikraj.campussecrets.models.Note;
 public class ViewNotes extends Fragment {
 RecyclerView noteslist;
     LinearLayoutManager mLayoutManager;
-    //   SmallBang mSmallBang;ImageView mImage;
 
     private final SpringSystem springSystem = SpringSystem.create();
 
@@ -64,8 +61,7 @@ RecyclerView noteslist;
         myRef = database.getReference("college/1/notes");
 
         Toolbar toolbar  = (Toolbar) rootView.findViewById(R.id.toolbar);
-        toolbar.setTitle("Posts");
-       //  mSmallBang = SmallBang.attach2Window(getActivity());
+        toolbar.setTitle(R.string.posts);
 
 
         noteslist=(RecyclerView)rootView.findViewById(R.id.recyclernotes);
@@ -113,9 +109,7 @@ RecyclerView noteslist;
                                 spring.setEndValue(0.1);
                                 break;
                             case MotionEvent.ACTION_UP:
-                                Log.e("motion","button up");
                             case MotionEvent.ACTION_CANCEL:
-                                Log.e("motion","button canc");
 
                                 spring.setEndValue(0);
                                 if(MotionEvent.ACTION_UP==event.getAction()){
@@ -142,10 +136,8 @@ RecyclerView noteslist;
 
                                 break;
                             case MotionEvent.ACTION_BUTTON_PRESS:
-                                Log.e("motion","button pree");
                                 break;
                             case MotionEvent.ACTION_BUTTON_RELEASE:
-                                Log.e("motion","button release");
                                 break;
                         }
                         return true;
@@ -219,7 +211,6 @@ RecyclerView noteslist;
             time=(TextView)v.findViewById(R.id.time);
             card=(RelativeLayout)v.findViewById(R.id.card_view);
             im=(ImageView)v.findViewById(R.id.backgroundimage);
-           // fav= (ImageView)v.findViewById(R.id.fav);
             user=(TextView)v.findViewById(R.id.user);
         }
 

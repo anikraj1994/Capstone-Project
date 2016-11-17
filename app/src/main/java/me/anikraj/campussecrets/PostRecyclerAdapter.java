@@ -1,31 +1,17 @@
 package me.anikraj.campussecrets;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.facebook.rebound.SimpleSpringListener;
-import com.facebook.rebound.Spring;
-
-import java.util.Calendar;
 import java.util.List;
 
 import me.anikraj.campussecrets.models.Note;
-import me.anikraj.campussecrets.views.OpenNote;
 
 /**
  * Created by anikr on 11/17/2016.
@@ -55,24 +41,24 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         viewHolder.tv.setText(model.getText());
 
         Typeface type;
-        if(model.getType().compareTo("love")==0){
+        if(model.getType().compareTo(context.getString(R.string.type_love))==0){
             viewHolder.card.setBackgroundColor(context.getResources().getColor(R.color.love));
-            type = Typeface.createFromAsset(context.getAssets(),"fonts/love.ttf");
+            type = Typeface.createFromAsset(context.getAssets(),context.getString(R.string.love_font));
             viewHolder.tv.setTypeface(type);
         }
-        else if(model.getType().compareTo("joke")==0){
+        else if(model.getType().compareTo(context.getString(R.string.type_joke))==0){
             viewHolder.card.setBackgroundColor(context.getResources().getColor(R.color.joke));
-            type = Typeface.createFromAsset(context.getAssets(),"fonts/love2.ttf");
+            type = Typeface.createFromAsset(context.getAssets(),context.getString(R.string.joke_font));
             viewHolder.tv.setTypeface(type);
         }
-        else if(model.getType().compareTo("hate")==0){
+        else if(model.getType().compareTo(context.getString(R.string.type_hate))==0){
             viewHolder.card.setBackgroundColor(context.getResources().getColor(R.color.hate));
-            type = Typeface.createFromAsset(context.getAssets(),"fonts/hate.ttf");
+            type = Typeface.createFromAsset(context.getAssets(),context.getString(R.string.hate_font));
             viewHolder.tv.setTypeface(type);
         }
-        else if(model.getType().compareTo("conf")==0){
+        else if(model.getType().compareTo(context.getString(R.string.type_conf))==0){
             viewHolder.card.setBackgroundColor(context.getResources().getColor(R.color.confession));
-            type = Typeface.createFromAsset(context.getAssets(),"fonts/secret.ttf");
+            type = Typeface.createFromAsset(context.getAssets(),context.getString(R.string.conf_font));
             viewHolder.tv.setTypeface(type);
         }
     }

@@ -24,7 +24,6 @@ import me.anikraj.campussecrets.R;
 
 public class OpenNote extends AppCompatActivity {
     private final SpringSystem springSystem = SpringSystem.create();
-    //SmallBang mSmallBang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,61 +33,53 @@ public class OpenNote extends AppCompatActivity {
         ((EmojiconTextView)findViewById(R.id.info_text)).setText(getIntent().getStringExtra("text"));
         ((TextView)findViewById(R.id.time)).setText(DateUtils.getRelativeTimeSpanString(getIntent().getLongExtra("time",0), Calendar.getInstance().getTimeInMillis(), 0));
         ((TextView)findViewById(R.id.user)).setText(getIntent().getStringExtra("username"));
-       // mSmallBang = SmallBang.attach2Window(this);
         RelativeLayout card=(RelativeLayout)findViewById(R.id.card_view);
         TextView tv=(TextView)findViewById(R.id.info_text);
         ImageView im=(ImageView)findViewById(R.id.backgroundimage);
         final CardView cardview=(CardView)findViewById(R.id.cardview);
-       // final ImageView fav=(ImageView)findViewById(R.id.fav);
-//        fav.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                like(v,fav);
-//            }
-//        });
         Typeface type;
-        if(getIntent().getStringExtra("type").compareTo("love")==0){
+        if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_love))==0){
             card.setBackgroundColor(getResources().getColor(R.color.love));
-            type = Typeface.createFromAsset(getAssets(),"fonts/love.ttf");
+            type = Typeface.createFromAsset(getAssets(),getString(R.string.love_font));
             tv.setTypeface(type);
         }
-        else if(getIntent().getStringExtra("type").compareTo("joke")==0){
+        else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_joke))==0){
             card.setBackgroundColor(getResources().getColor(R.color.joke));
-            type = Typeface.createFromAsset(getAssets(),"fonts/love2.ttf");
+            type = Typeface.createFromAsset(getAssets(),getString(R.string.joke_font));
             tv.setTypeface(type);
         }
-        else if(getIntent().getStringExtra("type").compareTo("hate")==0){
+        else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_hate))==0){
             card.setBackgroundColor(getResources().getColor(R.color.hate));
-            type = Typeface.createFromAsset(getAssets(),"fonts/hate.ttf");
+            type = Typeface.createFromAsset(getAssets(),getString(R.string.hate_font));
             tv.setTypeface(type);
         }
-        else if(getIntent().getStringExtra("type").compareTo("conf")==0){
+        else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_conf))==0){
             card.setBackgroundColor(getResources().getColor(R.color.confession));
-            type = Typeface.createFromAsset(getAssets(),"fonts/secret.ttf");
+            type = Typeface.createFromAsset(getAssets(),getString(R.string.conf_font));
             tv.setTypeface(type);
         }
 
-        if(!getIntent().getStringExtra("imgurl").isEmpty()){
-            Glide.with(this).load(getIntent().getStringExtra("imgurl")).centerCrop().into(im);
+        if(!getIntent().getStringExtra(getString(R.string.imgurl)).isEmpty()){
+            Glide.with(this).load(getIntent().getStringExtra(getString(R.string.imgurl))).centerCrop().into(im);
 
-            if(getIntent().getStringExtra("type").compareTo("love")==0){
+            if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_love))==0){
                 card.setBackgroundColor(getResources().getColor(R.color.lovealpha));
-                type = Typeface.createFromAsset(getAssets(),"fonts/love.ttf");
+                type = Typeface.createFromAsset(getAssets(),getString(R.string.love_font));
                 tv.setTypeface(type);
             }
-            else if(getIntent().getStringExtra("type").compareTo("joke")==0){
+            else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_joke))==0){
                 card.setBackgroundColor(getResources().getColor(R.color.jokealpha));
-                type = Typeface.createFromAsset(getAssets(),"fonts/love2.ttf");
+                type = Typeface.createFromAsset(getAssets(),getString(R.string.joke_font));
                 tv.setTypeface(type);
             }
-            else if(getIntent().getStringExtra("type").compareTo("hate")==0){
+            else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_hate))==0){
                 card.setBackgroundColor(getResources().getColor(R.color.hatealpha));
-                type = Typeface.createFromAsset(getAssets(),"fonts/hate.ttf");
+                type = Typeface.createFromAsset(getAssets(),getString(R.string.hate_font));
                 tv.setTypeface(type);
             }
-            else if(getIntent().getStringExtra("type").compareTo("conf")==0){
+            else if(getIntent().getStringExtra(getString(R.string.type)).compareTo(getString(R.string.type_conf))==0){
                 card.setBackgroundColor(getResources().getColor(R.color.confessionalpha));
-                type = Typeface.createFromAsset(getAssets(),"fonts/secret.ttf");
+                type = Typeface.createFromAsset(getAssets(),getString(R.string.conf_font));
                 tv.setTypeface(type);
             }
         }
@@ -133,21 +124,6 @@ public class OpenNote extends AppCompatActivity {
 
     }
 
-
-//    public void like(View view,ImageView favv){
-//        favv.setImageResource(R.drawable.heart_red);
-//        mSmallBang.bang(view);
-//        mSmallBang.setmListener(new SmallBangListener() {
-//            @Override
-//            public void onAnimationStart() {
-//            }
-//
-//            @Override
-//            public void onAnimationEnd() {
-//                toast("heart+1");
-//            }
-//        });
-//    }
     private void toast(String text) {
         Toast.makeText(this,text, Toast.LENGTH_SHORT).show();
     }

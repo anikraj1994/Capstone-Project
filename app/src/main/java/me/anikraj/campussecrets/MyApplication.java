@@ -1,7 +1,6 @@
 package me.anikraj.campussecrets;
 
 import android.app.Application;
-import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,8 +13,6 @@ public class MyApplication extends Application {
     public MyApplication() {
         // MyApplication method fires only once per application start.
         // getApplicationContext returns null here
-
-        Log.i("main", "Constructor fired");
     }
 
     @Override
@@ -26,7 +23,6 @@ public class MyApplication extends Application {
         // but also application has context here
         if (!FirebaseApp.getApps(this).isEmpty())
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        Log.i("main", "onCreate fired");
         super.onCreate();
     }
 }

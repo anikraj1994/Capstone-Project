@@ -25,6 +25,7 @@
             android:layout_weight="0"
             android:layout_height="wrap_content"
             android:onClick="search"
+            android:contentDescription="@string/search"
             android:text="@string/search"/>
 
 

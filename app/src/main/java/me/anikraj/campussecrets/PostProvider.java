@@ -1,13 +1,11 @@
 package me.anikraj.campussecrets;
 
 import android.content.ContentProvider;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.support.annotation.Nullable;
@@ -24,12 +22,6 @@ public class PostProvider extends ContentProvider {
     private static final String TUTORIALS_BASE_PATH = "posts";
     public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
             + "/" + TUTORIALS_BASE_PATH);
-
-//    public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE
-//            + "/mt-post";
-//    public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE
-//            + "/mt-post";
-
     private static final UriMatcher sURIMatcher = new UriMatcher(
             UriMatcher.NO_MATCH);
     static {

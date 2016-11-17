@@ -64,6 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/logout"
+                android:contentDescription="@string/logout"
                 android:textColor="@color/hate"
                 android:background="@android:color/transparent"
                 android:id="@+id/logout"

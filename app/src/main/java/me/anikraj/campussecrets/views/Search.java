@@ -7,23 +7,20 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import me.anikraj.campussecrets.PostDB;
 import me.anikraj.campussecrets.PostProvider;
@@ -41,7 +38,7 @@ RecyclerView noteslist;
 
     String run() throws IOException {
         Request request = new Request.Builder()
-                .url("https://campus-secrets.firebaseio.com/college/1/notes.json?auth=XHnkavc9QazDSuIlLvT09uwkwh8rMXKYM1ERkJzw")
+                .url(getString(R.string.db_rest_url))
                 .build();
 
         Response response = client.newCall(request).execute();
@@ -53,7 +50,7 @@ RecyclerView noteslist;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-getSupportActionBar().setTitle("Search");
+getSupportActionBar().setTitle(R.string.searchs);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         noteslist=(RecyclerView)findViewById(R.id.recyclernotes);
@@ -85,10 +82,10 @@ public void del(){
     public void search(View v){
         String q=((EditText)findViewById(R.id.editText)).getText().toString();
         if(q.isEmpty()){
-            Toast.makeText(getApplicationContext(),"search empty",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.empty_Search,Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(getApplicationContext(),"searching",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.searching,Toast.LENGTH_SHORT).show();
             del();
             new SearchFB().execute(q);
         }
@@ -145,15 +142,14 @@ public void del(){
                 String x = run();
                 JSONObject jo=new JSONObject(x);
                 Iterator k=jo.keys();
-                while(k.hasNext()){//Log.e("hs","next");
-                    String first =(String) k.next();//Log.e("hs",first);
+                while(k.hasNext()){
+                    String first =(String) k.next();
                     if (jo.getJSONObject(first).getString("text").toLowerCase().contains(params[0].toLowerCase())) {
                         add(jo.getJSONObject(first).getString("text"), jo.getJSONObject(first).getString("type"));c++;
                     }
                 }
             }catch (Exception e){
                 //handle
-                Log.e("Search",e.getMessage());
             }
             return c;
         }
@@ -161,7 +157,7 @@ public void del(){
         @Override
         protected void onPostExecute(Integer aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(getApplicationContext(),"search done, "+aVoid+" results",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),getString(R.string.search_done)+aVoid+getString(R.string.results),Toast.LENGTH_SHORT).show();
         }
     }
 }

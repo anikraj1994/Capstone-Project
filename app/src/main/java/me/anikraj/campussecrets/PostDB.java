@@ -24,9 +24,9 @@ public class PostDB extends SQLiteOpenHelper {
             + " text not null);";
 
     private static final String DB_SCHEMA = CREATE_TABLE;
-
+    Context cc;
     public PostDB(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+        super(context, DB_NAME, null, DB_VERSION);cc=context;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class PostDB extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(DEBUG_TAG, "Upgrading database. Existing contents will be lost. ["
+        Log.w(DEBUG_TAG, cc.getString(R.string.upgrading_database)
                 + oldVersion + "]->[" + newVersion + "]");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);

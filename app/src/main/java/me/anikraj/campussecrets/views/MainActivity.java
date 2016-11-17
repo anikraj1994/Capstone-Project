@@ -10,11 +10,11 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -33,7 +33,7 @@ import java.util.Arrays;
 import me.anikraj.campussecrets.CustomViewPager;
 import me.anikraj.campussecrets.R;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 2772 ;
     private static final int NUM_PAGES = 3;
     private CustomViewPager mPager;
@@ -47,21 +47,14 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-      //  toolbar  = (Toolbar) findViewById(R.id.toolbar);
-     //   toolbar.setTitle("Campus Secrets");
-     //   FirebaseCrash.report(new Exception("My first Android non-fatal error"));
-
-
 
         fab = (FloatingActionButton)findViewById(R.id.fab);
 
 
         checkauth();
         playintroifneeded();
-        // login();
 
         pager_init();
-       // bottombar_init(savedInstanceState);
         if(getIntent().getStringExtra("tag")!=null) {
             if (getIntent().getStringExtra("tag").compareTo("camera") == 0) {
                 mPager.setCurrentItem(1, false);
@@ -85,7 +78,7 @@ public class MainActivity extends FragmentActivity {
                     RC_SIGN_IN);
         }
         else {
-            Log.d("auth","yes");
+            Log.d(getString(R.string.auth_tag),getString(R.string.yes));
         }
     }
 
@@ -118,58 +111,12 @@ public class MainActivity extends FragmentActivity {
         t.start();
 
     }
-    private void bottombar_init(Bundle savedInstanceState){
-//        mBottomBar = BottomBar.attach(this, savedInstanceState);mBottomBar.noTopOffset();
-//
-//        mBottomBar.setItemsFromMenu(R.menu.bottombar_menu, new OnMenuTabClickListener() {
-//            @Override
-//            public void onMenuTabSelected(@IdRes int menuItemId) {
-//                if (menuItemId == R.id.bottomBarHome) {
-//                    // The user selected item number one.
-//                    mPager.setCurrentItem(0, false);
-//                }
-//                else if (menuItemId == R.id.bottomBarStrends) {
-//                    // The user selected item number one.
-//                    mPager.setCurrentItem(1, false);
-//                }
-//                else  if (menuItemId == R.id.bottomBarEvents) {
-//                    // The user selected item number one.
-//                    mPager.setCurrentItem(2, false);
-//                }
-//                else  if (menuItemId == R.id.bottomBarSettings) {
-//                    // The user selected item number one.
-//                    mPager.setCurrentItem(3, false);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onMenuTabReSelected(@IdRes int menuItemId) {
-//                if (menuItemId == R.id.bottomBarHome) {
-//                    // The user reselected item number one, scroll your content to top.
-//                }
-//            }
-//        });
-//
-//        // Setting colors for different tabs when there's more than three of them.
-//        // You can set colors for tabs in three different ways as shown below.
-//        mBottomBar.mapColorForTab(0,  ContextCompat.getColor(this, R.color.colorPrimaryDark));
-//        mBottomBar.mapColorForTab(1,  ContextCompat.getColor(this, R.color.colorPrimary));
-//        mBottomBar.mapColorForTab(2,  ContextCompat.getColor(this, R.color.colorPrimaryDark));
-//        mBottomBar.mapColorForTab(3,  ContextCompat.getColor(this, R.color.colorPrimary));
-//        //mBottomBar.mapColorForTab(4, "#FF9800");
-//        int paddingPixel = 8;
-//        float density = this.getResources().getDisplayMetrics().density;
-//        int paddingDp = (int)(paddingPixel * density);
-//        //mBottomBar.setPadding(0,0,0,paddingDp);
-    }
 
 
     private void pager_init(){
         mPager = (CustomViewPager) findViewById(R.id.pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-       // mPager.setPagingEnabled(false);
         mPager.setCurrentItem(0, false);
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -254,7 +201,7 @@ public class MainActivity extends FragmentActivity {
                 apiAvailability.getErrorDialog(this, resultCode, PLAY_SERVICES_RESOLUTION_REQUEST)
                         .show();
             } else {
-                Log.i(TAG, "This device is not supported.");
+                Log.i(TAG, getString(R.string.device_not_supported));
                 finish();
             }
             return false;
@@ -269,8 +216,6 @@ public class MainActivity extends FragmentActivity {
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
-                //startActivity(new Intent(this, WelcomeBackActivity.class));
-               // finish();
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 if (user != null) {
                     // Name, email address, and profile photo Url

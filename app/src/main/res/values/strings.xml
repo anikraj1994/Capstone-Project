@@ -34,5 +34,49 @@
 
     <string name="type_here">Type here</string>
     <string name="search">Search</string>
+    <string name="error">error</string>
+    <string name="secret_event">Secret Event</string>
+    <string name="joke">Joke</string>
+    <string name="hate">Hate</string>
+    <string name="conf">Confession</string>
+    <string name="fb_db_notes">college/1/notes</string>
+    <string name="posted">Posted!</string>
+    <string name="action">Action</string>
+    <string name="empty_note">Empty Note!</string>
+    <string name="not_logged_in">Not Logged in!</string>
+    <string name="new_picture">New Picture</string>
+    <string name="from_camera">From your Camera</string>
+    <string name="type_joke">joke</string>
+    <string name="type_hate">hate</string>
+    <string name="type_conf">conf</string>
+    <string name="you_can_only_choose_one">You can only choose one!</string>
+    <string name="nothing_selected">Nothing Selected</string>
+    <string name="type_love">love</string>
+    <string name="i_love">I love...</string>
+    <string name="love_font">fonts/love.ttf</string>
+    <string name="joke_font">fonts/love2.ttf</string>
+    <string name="knock_knock">Knock Knock...</string>
+    <string name="hate_font">fonts/hate.ttf</string>
+    <string name="i_hate">I hate...</string>
+    <string name="conf_font">fonts/secret.ttf</string>
+    <string name="i_broke">I broke...</string>
+    <string name="uploading_image">Uploading Image</string>
+    <string name="uploading_images">"Uploading Image "</string>
+    <string name="upload_paused">Uploading paused</string>
+    <string name="oops">Oops...</string>
+    <string name="upload_failed_try_again">Image upload failed! Try again!</string>
+    <string name="auth_tag">auth</string>
+    <string name="yes">yes</string>
+    <string name="device_not_supported">This device is not supported.</string>
+    <string name="type">type</string>
+    <string name="imgurl">imgurl</string>
+    <string name="upgrading_database">Upgrading database. Existing contents will be lost. [</string>
+    <string name="db_rest_url">https://campus-secrets.firebaseio.com/college/1/notes.json?auth=XHnkavc9QazDSuIlLvT09uwkwh8rMXKYM1ERkJzw</string>
+    <string name="searchs">Search</string>
+    <string name="empty_Search">search empty</string>
+    <string name="searching">searching</string>
+    <string name="search_done">"search done, "</string>
+    <string name="results">" results"</string>
+    <string name="posts">Posts</string>
 
 </resources>
