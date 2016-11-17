@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="me.anikraj.campussecrets">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon">
+        <activity
+            android:name=".views.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".views.Splash"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".views.LoginCompleteActivity"
+            android:label="@string/title_activity_login_complete"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="me.anikraj.campussecrets.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/image_path" />
+        </provider>
+
+        <activity
+            android:name=".views.OpenNote"
+            android:theme="@style/AppThemeTransparent" />
+
+        <receiver android:name=".SimpleWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/simple_widget_info" />
+        </receiver>
+
+        <activity android:name=".views.Search"><meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".views.Search" /></activity>
+
+        <provider
+            android:authorities="me.anikraj.campussecrets.PostProvider"
+            android:multiprocess="true"
+            android:name="me.anikraj.campussecrets.PostProvider">
+            </provider>
+
+    </application>
+
+</manifest>

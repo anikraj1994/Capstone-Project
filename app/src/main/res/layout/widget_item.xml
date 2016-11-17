@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:emojicon="http://schemas.android.com/tools"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/card_view"
+                android:background="@color/lovealpha"
+                android:layout_height="wrap_content">
+                <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
+                    android:id="@+id/info_text"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:transitionName="@string/transition_note_text"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textSize="35sp"
+                    emojicon:emojiconSize="35sp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/type_secrets_here"
+                    android:layout_above="@+id/linearLayout" />
+            </RelativeLayout>
+</LinearLayout>

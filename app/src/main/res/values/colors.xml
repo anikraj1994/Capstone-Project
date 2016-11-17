@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#607D8B</color>
+    <color name="colorPrimaryDark">#455A64</color>
+    <color name="primary_light">#CFD8DC</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
+
+
+    <color name="white">#fff</color>
+    <color name="love">#ee4558</color>
+    <color name="lovedark">#C43949</color>
+    <color name="lovealpha">#66ee4558</color>
+    <color name="hate">#e74c3c</color>
+    <color name="hatedark">#c0392b</color>
+    <color name="hatealpha">#66e74c3c</color>
+    <color name="joke">#f1c40f</color>
+    <color name="jokedark">#f39c12</color>
+    <color name="jokealpha">#66f1c40f</color>
+    <color name="confession">#1abc9c</color>
+    <color name="confessiondark">#16a085</color>
+    <color name="confessionalpha">#661abc9c</color>
+
+</resources>

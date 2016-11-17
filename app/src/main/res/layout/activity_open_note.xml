@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:emojicon="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:background="#99000000"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="me.anikraj.campussecrets.views.OpenNote">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:transitionName="@string/transition_card"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardCornerRadius="6dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:scaleType="centerCrop"
+                android:id="@+id/backgroundimage"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_slide3"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/card_view"
+                android:background="@color/lovealpha"
+                android:layout_height="match_parent">
+                <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
+                    android:id="@+id/info_text"
+                    android:padding="16dp"
+                    android:layout_width="match_parent"
+                    android:transitionName="@string/transition_note_text"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    emojicon:emojiconSize="35sp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/type_secrets_here"
+                    android:layout_above="@+id/linearLayout" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/linearLayout">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#66000000"
+                        android:id="@+id/user"
+                        android:layout_weight="1"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#66000000"
+                        android:layout_weight="0"
+                        android:id="@+id/time"/>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+        </FrameLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

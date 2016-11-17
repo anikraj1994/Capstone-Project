@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "215727838328",
+    "firebase_url": "https://campus-secrets.firebaseio.com",
+    "project_id": "campus-secrets",
+    "storage_bucket": "campus-secrets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215727838328:android:65b30a46c5742dfa",
+        "android_client_info": {
+          "package_name": "me.anikraj.campussecrets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215727838328-1bcmpamk4htg38r9aum60epruki6q5u6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.anikraj.campussecrets",
+            "certificate_hash": "D8E51B77A2F4FC8C45528C0F704F179BC6055DB5"
+          }
+        },
+        {
+          "client_id": "215727838328-qkadinao51ks5kmguh4keq8f9jp155g5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.anikraj.campussecrets",
+            "certificate_hash": "0713FA4FF517344086AED32C82CC96DA82DA17A8"
+          }
+        },
+        {
+          "client_id": "215727838328-0bkut09v03ruq4vhp99827g32sfpk094.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8T9x2dxvXwO4-_W_ymDEHDNYuBvKZBwI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215727838328-0bkut09v03ruq4vhp99827g32sfpk094.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
